@@ -7,6 +7,11 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
     stages {
+        stage("Check ct") {
+          script {
+            sh "which ct"
+          }
+        }
         stage("Lint") {
             steps {
                 container("chart-testing") {
