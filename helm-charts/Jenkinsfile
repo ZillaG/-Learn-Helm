@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+      PATH="/usr/local/bin:$PATH"
+    }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
@@ -22,7 +25,7 @@ pipeline {
             steps {
                 script {
                     container("chart-testing") {
-			sh "helm package --dependency-update helm-charts/charts/*"
+			                  sh "helm package --dependency-update helm-charts/charts/*"
                     }
                 }
             }
