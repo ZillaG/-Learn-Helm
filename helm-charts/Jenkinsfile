@@ -8,9 +8,11 @@ pipeline {
     }
     stages {
         stage("Check ct") {
-          script {
-            sh "which ct"
-          }
+            steps {
+                script {
+                  sh "which ct"
+                }
+            }
         }
         stage("Lint") {
             steps {
